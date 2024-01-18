@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="St0h23Dkm7OurYVI4SI0" name="第 1 页">
-        <mxGraphModel dx="1881" dy="705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1862" dy="599" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -42,6 +42,9 @@
                         <mxPoint x="310" y="230" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="18" style="edgeStyle=none;html=1;exitX=1.003;exitY=0.07;exitDx=0;exitDy=0;entryX=-0.01;entryY=0.056;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#FFFFFF;endArrow=none;endFill=0;exitPerimeter=0;" edge="1" parent="1" source="11" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="11" value="gem5::o3::Fetch" style="swimlane;startSize=23;" vertex="1" parent="1">
                     <mxGeometry x="-75" y="510" width="410" height="320" as="geometry">
                         <mxRectangle x="-75" y="160" width="100" height="30" as="alternateBounds"/>
@@ -57,6 +60,40 @@
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="370" y="620" as="sourcePoint"/>
                         <mxPoint x="420" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="实例化" style="swimlane;startSize=23;" vertex="1" collapsed="1" parent="1">
+                    <mxGeometry x="410" y="620" width="100" height="30" as="geometry">
+                        <mxRectangle x="410" y="620" width="420" height="250" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="&lt;span style=&quot;font-family: Söhne, ui-sans-serif, system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, Ubuntu, Cantarell, &amp;quot;Noto Sans&amp;quot;, sans-serif, &amp;quot;Helvetica Neue&amp;quot;, Arial, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px;&quot;&gt;当创建 O3 CPU 的实例时，&lt;br&gt;Fetch 类的实例也会被创建作为该 CPU 模型的一部分。&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=#FFFFFF;container=0;" vertex="1" parent="16">
+                    <mxGeometry y="30" width="420" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;div style=&quot;background-color: rgb(30, 30, 30); line-height: 20px;&quot;&gt;&lt;div style=&quot;background-color: rgb(42, 37, 47);&quot;&gt;&lt;div style=&quot;background-color: rgb(30, 30, 30); line-height: 20px;&quot;&gt;&lt;div style=&quot;font-size: 15.4px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelPosition=center;verticalLabelPosition=middle;" vertex="1" parent="1">
+                    <mxGeometry x="705" y="655" width="20" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="关键代码：事件驱动" style="swimlane;startSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-660" y="140" width="450" height="580" as="geometry">
+                        <mxRectangle x="-370" y="130" width="150" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="&lt;div style=&quot;background-color: rgb(30, 30, 30); line-height: 20px;&quot;&gt;&lt;div style=&quot;background-color: rgb(42, 37, 47);&quot;&gt;&lt;div style=&quot;background-color: rgb(30, 30, 30); line-height: 20px;&quot;&gt;&lt;div style=&quot;color: rgb(212, 212, 212); font-size: 15.4px;&quot;&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 15.96px; line-height: 21px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;void&amp;nbsp;&lt;/span&gt;CPU::tick() {&lt;/div&gt;&lt;div&gt;...&lt;br&gt;&lt;div style=&quot;font-size: 15.96px; line-height: 21px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #6a9955;&quot;&gt;&amp;nbsp; &amp;nbsp; //Tick each of the stages&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; fetch.tick();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; decode.tick();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; rename.tick();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; iew.tick();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; commit.tick();&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #6a9955;&quot;&gt;&amp;nbsp; &amp;nbsp; // Now advance the time buffers&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; timeBuffer.advance();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; fetchQueue.advance();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; decodeQueue.advance();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; renameQueue.advance();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; iewQueue.advance();&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="20">
+                    <mxGeometry x="10" y="40" width="330" height="330" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;div style=&quot;background-color: rgb(30, 30, 30); line-height: 20px;&quot;&gt;&lt;div style=&quot;background-color: rgb(42, 37, 47);&quot;&gt;&lt;div style=&quot;background-color: rgb(30, 30, 30); line-height: 20px;&quot;&gt;&lt;div style=&quot;color: rgb(212, 212, 212); font-size: 15.4px;&quot;&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 15.96px; line-height: 21px;&quot;&gt;&lt;div&gt;&lt;div style=&quot;font-size: 15.96px; line-height: 21px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;void&amp;nbsp;&lt;/span&gt;CPU::startup()&lt;/div&gt;&lt;div&gt;{&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; BaseCPU::startup();&lt;/div&gt;&lt;br&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; fetch.startupStage();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; decode.startupStage();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; iew.startupStage();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; rename.startupStage();&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; commit.startupStage();&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="20">
+                    <mxGeometry x="10" y="360" width="250" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=none;html=1;fontColor=#FFFFFF;endArrow=none;endFill=0;" edge="1" parent="20" source="21" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="edgeStyle=none;html=1;fontColor=#FFFFFF;endArrow=none;endFill=0;" edge="1" parent="20" source="21" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=none;html=1;exitX=0.998;exitY=0.038;exitDx=0;exitDy=0;entryX=-0.001;entryY=0.043;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#FFFFFF;endArrow=none;endFill=0;exitPerimeter=0;" edge="1" parent="1" source="20" target="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-170" y="200.0000000000001" as="sourcePoint"/>
+                        <mxPoint x="-97.23000000000002" y="289.2800000000001" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>
